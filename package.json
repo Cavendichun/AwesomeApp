@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "app": "electron electronEntry.js",
-    "dist": "rm -rf ./preBuild/dist && webpack --config webpack/webpack.config.dist.js -p",
-    "dist-first": "webpack --config webpack/webpack.config.dist.js -p",
+    "dist": "webpack --config webpack/webpack.config.dist.js -p",
     "build": "cd ./preBuild && npm run create"
   },
   "repository": {

@@ -15,9 +15,7 @@ function createMianWindow () {
         frame: false
     })
     mainWindow.loadURL("http://localhost:" + LISTEN_PORT + "/");
-    mainWindow.loadURL('file://' + `${path.resolve(__dirname, './dist/index.html')}`);
-    mainWindow.loadFile(path.resolve(__dirname, './dist/index.html'));
-    mainWindow.on("closed", function () {  
+    mainWindow.on("closed", function () {
         mainWindow = null;
         app.quit();
     })
@@ -30,11 +28,11 @@ function createMianWindow () {
     // mainWindow.webContents.openDevTools();
 }
 
-app.on("ready", function () {  
+app.on("ready", function () {
     createMianWindow();
 })
 
-app.on("window-all-closed", function () {  
+app.on("window-all-closed", function () {
     app.quit();
 })
 
