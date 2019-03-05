@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
 import LoginPage from './Pages/LoginPage';
-import JustifyFrameDrawer from './Pages/components/JustifuFrameDrawer';
+import TitleBar from './Pages/components/TitleBar';
+import Fetch from './Util/fetch';
 import './Styles/app.scss';
 
 class App extends React.PureComponent {
-    
+    constructor(props) {
+        super(props);
+        this.onUserLogin = this.onUserLogin.bind(this);
+        this.state = {
+            userinfo: null
+        }
+    }
+
+    componentDidMount() {
+        alert('fuck you!!')
+        this.onUserLogin();
+    }
+
+    async onUserLogin() {
+        const res = await Fetch('/mgs_service/api/user/userinfo', 'get', { name: 11 });
+        console.log(res);
+    }
+
     render() {
-        return (  
+        const { userinfo } = this.state;
+        return (
             <div id='app'>
-                <LoginPage />
+                { userinfo ? <h1>HELLO</h1> : <LoginPage onUserLogin={this.onUserLogin}/> }
                 {/* 调整窗口样式的侧边栏 */}
-                <JustifyFrameDrawer />
+                <TitleBar />
             </div>
         );
     }
 }
- 
+
 export default App;

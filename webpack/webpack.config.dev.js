@@ -11,6 +11,7 @@ module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, '../src/index.js'),  //入口文件 index.js
     target: 'electron-renderer',
+    devtool: 'eval-source-map',
     devServer: {
         historyApiFallback: true,
         inline: true,
@@ -38,14 +39,21 @@ module.exports = {
                 test: /\.(css|scss)$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8192
+                }
             }
         ]
     },
-    // node: {
-    //     fs: 'empty'
-    // },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('style.css'),
+        new webpack.DefinePlugin({
+            APP_MODE: JSON.stringify('DEVELOPMENT')
+        })
     ]
 }

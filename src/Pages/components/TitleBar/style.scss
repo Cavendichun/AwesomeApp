@@ -3,14 +3,30 @@
     position: fixed;
     height: 30px;
     width: 100vw;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #333333b6;
     top: 0;
     right: 0;
     transition: background-color .2s;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     -webkit-app-region: drag;
+    .justifu-btn-group {
+        display: flex;
+    }
+    .logo {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        img {
+            height: 64%;
+        }
+    }
+    .title {
+        color: #ccc;
+        font-size: 12px;
+        align-self: center;
+    }
     .icon {
         transition: .2s;
         -webkit-app-region: no-drag;

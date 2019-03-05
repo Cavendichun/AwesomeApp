@@ -15,10 +15,19 @@ function createMianWindow () {
         frame: false
     })
     mainWindow.loadURL("http://localhost:" + LISTEN_PORT + "/");
+    mainWindow.loadURL('file://' + `${path.resolve(__dirname, './dist/index.html')}`);
+    mainWindow.loadFile(path.resolve(__dirname, './dist/index.html'));
     mainWindow.on("closed", function () {  
         mainWindow = null;
+        app.quit();
     })
-    mainWindow.setMenu(null)
+    mainWindow.on("maximize", function () {
+        mainWindow.webContents.send('window-maximize');
+    })
+    mainWindow.on("unmaximize", function () {
+        mainWindow.webContents.send('window-unmaximize');
+    })
+    // mainWindow.webContents.openDevTools();
 }
 
 app.on("ready", function () {  
@@ -40,9 +49,9 @@ ipcMain.on('min-app', () => {
 ipcMain.on('max-app', () => {
     if (mainWindow.isMaximized()) {
         // 若已经是最大化了，则还原
-        mainWindow.unmaximize()
+        mainWindow.unmaximize();
     } else {
         // 最大化窗口
-        mainWindow.maximize()
+        mainWindow.maximize();
     }
 });
