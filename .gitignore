@@ -1,3 +1,5 @@
 /node_modules/
-/dist/
-/preBuild/
+/preBuild/dist/
+/preBuild/node_modules/
+/preBuild/packaged/
+package-lock.json

@@ -1,0 +1,13 @@
+{
+  "name": "awesomeapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "packager.js",
+  "scripts": {
+    "packager": "electron-packager . AwesomeApp --win --out ./packaged/ --app-version 0.0.1 --arch=x64 --electron-version 4.0.6 --overwrite"
+  },
+  "devDependencies": {
+    "electron": "^4.0.6",
+    "electron-packager": "^13.1.0"
+  }
+}
