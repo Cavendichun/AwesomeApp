@@ -42,14 +42,14 @@ class LoginPage extends Component {
             <div className="login-form-wrapper">
                 <Fab className="switch-login-type" onClick={this.changeLoginType}>
                     {/* 可以选择不同的登陆方式 */}
-                    { 
-                        login_type == 'paint' ?  
+                    {
+                        login_type == 'paint' ?
                         <PaintIcon style={{fontSize: '50px'}} /> :
                         <PasswordIcon style={{fontSize: '50px'}} />
-                    }              
+                    }
                 </Fab>
                 <div className="form">
-                    
+
                 </div>
             </div>
         )

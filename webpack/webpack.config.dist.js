@@ -29,7 +29,7 @@ module.exports = {
         new ExtractTextPlugin('style-[hash].css'),
         new webpack.DefinePlugin({
             APP_MODE: JSON.stringify('PRODUCTION'),
-            PROXY_URL: JSON.stringify('http://39.105.174.177:3002')
+            PROXY_URL: JSON.stringify('http://39.105.174.177:3002/')
         })
     ]
 }

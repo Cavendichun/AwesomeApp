@@ -21,7 +21,7 @@ function createMianWindow () {
     mainWindow.on("unmaximize", function () {
         mainWindow.webContents.send('window-unmaximize');
     })
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 }
 
 app.on("ready", function () {
