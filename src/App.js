@@ -14,7 +14,6 @@ class App extends React.PureComponent {
     }
 
     componentDidMount() {
-        alert('fuck you!!')
         this.onUserLogin();
     }
 
@@ -28,7 +27,7 @@ class App extends React.PureComponent {
         return (
             <div id='app'>
                 { userinfo ? <h1>HELLO</h1> : <LoginPage onUserLogin={this.onUserLogin}/> }
-                {/* 调整窗口样式的侧边栏 */}
+                {/* 标题栏 */}
                 <TitleBar />
             </div>
         );

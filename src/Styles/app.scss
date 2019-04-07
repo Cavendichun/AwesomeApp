@@ -2,3 +2,26 @@
     height: 100%;
     overflow: hidden;
 }
+
+//toast全局样式
+#toast-container {
+    left: auto !important;
+    top: 10% !important;
+    right: 7% !important;
+    .toast {
+        font-size: 13px;
+        min-height: 40px;
+        &.error {
+            background-color: #f17238a1;
+        }
+        &.success {
+            background-color: #00eaffa6;
+        }
+        &.warning {
+            background-color: #e4d300bf;
+        }
+        &.primary {
+            background-color: #323232d4;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+$default-color: #26a69a;
+
+.button-component {
+    background-color: var(--primary-color, $default-color) !important;
+}
