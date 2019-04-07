@@ -26,8 +26,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "md5": "^2.2.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-number-format": "^4.0.7"
   },
   "devDependencies": {
     "@material-ui/core": "^3.9.2",

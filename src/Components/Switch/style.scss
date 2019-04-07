@@ -1,0 +1,16 @@
+$default-color: #26a69a;
+
+.switch-component {
+    .switch label {
+        font-size: 12px;
+    }
+    .switch label input[type=checkbox]:checked + .lever {
+        background-color: var(--primary-color, $default-color) !important;
+        &::after {
+            background-color: var(--primary-color, $default-color) !important;
+        }
+    }
+    .switch label input[type=checkbox] + .lever::before {
+        display: none;
+    }
+}

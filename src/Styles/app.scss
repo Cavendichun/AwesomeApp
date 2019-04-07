@@ -12,16 +12,48 @@
         font-size: 13px;
         min-height: 40px;
         &.error {
-            background-color: #f17238a1;
+            background-color: #f44336;
         }
         &.success {
-            background-color: #00eaffa6;
+            background-color: #18b9c7;
         }
         &.warning {
-            background-color: #e4d300bf;
+            background-color: #e6cc12;
         }
         &.primary {
-            background-color: #323232d4;
+            background-color: #585858;
+        }
+    }
+}
+
+//全局loading遮罩
+#loading-mask-fixed {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #585858e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //条形
+    .progress {
+        width: 50%;
+        .indeterminate {
+            background-color: #f44279;
+        }
+    }
+    //环形
+    .preloader-wrapper {
+        width: 100px;
+        height: 100px;
+        .spinner-layer {
+            border-color: #f44279;
+            .circle {
+                border-width: 5px;
+            }
         }
     }
 }

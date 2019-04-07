@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     -webkit-app-region: drag;
+    z-index: 10000;
     .justifu-btn-group {
         display: flex;
     }

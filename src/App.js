@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import LoginPage from './Pages/LoginPage';
 import TitleBar from './Pages/components/TitleBar';
-import Fetch from './Util/fetch';
+import fetch from './Util/fetch';
 import './Styles/app.scss';
+import URL from './Util/url';
 
 class App extends React.PureComponent {
     constructor(props) {
@@ -18,7 +19,7 @@ class App extends React.PureComponent {
     }
 
     async onUserLogin() {
-        const res = await Fetch('/mgs_service/api/user/userinfo', 'get', { name: 11 });
+        const res = await fetch(URL.GET_USER_INFO, 'get', { name: 11 });
         console.log(res);
     }
 

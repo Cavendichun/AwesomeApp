@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import fetch from '../../Util/fetch';
-import { TextInput, Button } from '../../Components';
+import { TextInput, Button, Switch } from '../../Components';
 import Toast from '../../Util/toast';
 import './style.scss';
+import md5 from '../../Util/md5';
+import URL from '../../Util/url';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -34,13 +36,23 @@ class LoginPage extends Component {
 
     //登陆
     async onUserLogin() {
-        const { username, password } = this.state.formData;
+        if (this.state.LOGINING == true) return false;
+        const { username, password, remember } = this.state.formData;
         if (!username || !password) {
             Toast.error({
                 content: '用户名和密码不能为空',
-                duration: 1500000
-            }, () => { console.log(111) })
+                duration: 2000
+            })
+            return false;
         }
+        let params = {
+            username: username.toLowerCase(),
+            password: md5(password),
+            remember: remember || false
+        }
+        console.log(params);
+        this.setState({ LOGINING: true });
+        let res = await fetch(URL.USER_LOGIN, 'post', params, true);
     }
 
     render() {
@@ -58,22 +70,27 @@ class LoginPage extends Component {
                                 label='用户名'
                                 value={username}
                                 onChange={(e) => { this.onPasswordFormChange('username', e) }}
-                                color='purple'
+                                color='#f44279'
                             />
                             <TextInput
                                 label='密码'
                                 value={password}
                                 type='password'
                                 onChange={(e) => { this.onPasswordFormChange('password', e) }}
-                                color='purple'
+                                color='#f44279'
                                 onEnter={this.onUserLogin}
                             />
+                            <div className='operator-line'>
+                                <Switch label='记住密码' color='#f44279' onChange={(e) => { this.onPasswordFormChange('remember', e) }}/>
+                                <a className='reg-btn'>点击注册</a>
+                            </div>
                             <Button
                                 className='login-btn'
                                 title='登  录'
                                 size='large'
-                                color='purple'
-                                disabled={ !username || !password }
+                                color='#f44279'
+                                disabled={ !username || !password || this.state.LOGINING }
+                                onClick={this.onUserLogin}
                             />
                         </div>
                     </div>
