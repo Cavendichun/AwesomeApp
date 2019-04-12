@@ -11,7 +11,8 @@ module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, '../src/index.js'),  //入口文件 index.js
     target: 'electron-renderer',
-    devtool: 'eval-source-map',
+    // devtool: 'eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
     devServer: {
         historyApiFallback: true,
         inline: true,

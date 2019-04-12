@@ -1,7 +1,7 @@
 const mainToast = (status, options, callback) => {
     const {
         content,
-        duration = 500
+        duration = 1500
     } = options;
 
     M.toast({

@@ -5,6 +5,7 @@ import Toast from '../../Util/toast';
 import './style.scss';
 import md5 from '../../Util/md5';
 import URL from '../../Util/url';
+import { router } from '../../Util/route';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class LoginPage extends Component {
         this.setState({ formData: { username: currentUsername }, init: true });
     }
 
+    //值域改变
     onPasswordFormChange(name, value) {
         let formData = JSON.parse(JSON.stringify(this.state.formData));
         formData[name] = value;
@@ -50,9 +52,16 @@ class LoginPage extends Component {
             password: md5(password),
             remember: remember || false
         }
-        console.log(params);
         this.setState({ LOGINING: true });
-        let res = await fetch(URL.USER_LOGIN, 'post', params, true);
+        let res = this.props.onUserLogin(params);
+        if (res != true) {
+            this.setState({ LOGINING: false });
+        }
+    }
+
+    //点击注册按钮
+    onRegClick() {
+        router().history.push({ pathname: '/signup' })
     }
 
     render() {
@@ -82,7 +91,7 @@ class LoginPage extends Component {
                             />
                             <div className='operator-line'>
                                 <Switch label='记住密码' color='#f44279' onChange={(e) => { this.onPasswordFormChange('remember', e) }}/>
-                                <a className='reg-btn'>点击注册</a>
+                                <a className='reg-btn' onClick={this.onRegClick}>点击注册</a>
                             </div>
                             <Button
                                 className='login-btn'
